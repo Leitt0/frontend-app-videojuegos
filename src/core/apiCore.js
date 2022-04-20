@@ -62,7 +62,6 @@ export const signout = (next) => {
     }
 }
 
-
 export const authenticate = (data, next) => {
     if (typeof window !== 'undefined') {
         localStorage.setItem('jwt', JSON.stringify(data))
@@ -82,9 +81,8 @@ export const isAuthenticated = () => {
     }
 }
 
-
 export const createCategory = (userId, token, category) => {
-    return fetch(`${API}/category/create/`, {
+    return fetch(`${API}/category/create/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -92,6 +90,35 @@ export const createCategory = (userId, token, category) => {
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(category)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+export const getCategories = () => {
+    return fetch(`${API}/category/categories`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+export const createVideogame = (userId, token, videogame) => {
+    return fetch(`${API}/videogame/create/${userId}`,{
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: videogame 
     })
         .then(response => {
             return response.json()

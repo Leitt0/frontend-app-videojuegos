@@ -10,7 +10,7 @@ const AddCategory = () => {
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const { user, token } = isAuthenticated
+    const { user, token } = isAuthenticated();
 
     const handleChange = (event) => {
         setError('');
@@ -22,7 +22,7 @@ const AddCategory = () => {
         setError('')
         setSuccess(false)
         // make api call to end point
-        createCategory(/* user._id, */ token, { name })
+        createCategory(user._id, token, { name })
             .then(data => {
                 if (data.error) {
                     setError(true)
