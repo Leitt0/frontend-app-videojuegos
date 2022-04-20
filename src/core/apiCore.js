@@ -127,3 +127,15 @@ export const createVideogame = (userId, token, videogame) => {
             console.log(err)
         })
 }
+
+export const getVideogamesById = (videogameId) =>{
+    return fetch(`${API}/videogame/${videogameId}`, {
+        method: "GET"
+    })
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}

@@ -5,12 +5,14 @@ import Signup from './core/Signup'
 import Signin from './core/Signin'
 import AddCategory from "./core/AddCategory";
 import AddVideogame from "./core/AddVideogame";
+import Videogame from "./core/Videogame";
 
 const Rutas = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} ></Route>
+                <Route path="/videogame/:videogameId" element={<Videogame/>}></Route>
                 <Route path="/signin" element={<Signin />} ></Route>
                 <Route path="/signup" element={<Signup />} ></Route>
                 <Route path="/addcategory" element={<AddCategory />} ></Route>
